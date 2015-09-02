@@ -1,0 +1,45 @@
+<%= form_for(@humano) do |f| %>
+  <% if @humano.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@humano.errors.count, "error") %> prohibited this humano from being saved:</h2>
+
+      <ul>
+      <% @humano.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :mujer %><br>
+    <%= f.number_field :mujer, :id => 'mujer', :onblur => 'suma()' %>
+  </div>
+  <div class="field">
+    <%= f.label :hombre %><br>
+    <%= f.number_field :hombre, :id => 'hombre', :onblur => 'suma()' %>
+  </div>
+  
+  
+  <input id="total"></input>
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+
+<script>
+    
+function suma(){
+  var primer = document.getElementById('mujer').value;
+  var segun = document.getElementById('hombre').value;
+      
+  tota= (parseInt(primer) + parseInt(segun) );
+       
+  document.getElementById('total').value = tota;
+}
+
+</script>
+
+
